@@ -1,6 +1,7 @@
 body {
 	background: url("http://www.62226insurance.com/wp-content/uploads/2013/09/travel.jpeg");
 	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 div {
@@ -9,7 +10,13 @@ div {
 	font-family: Helvetica;
 	background: rgba(0,0,0,0.8);
 	padding: 70px 0 70px 0;
-	border: none;;
+	border: none;
+}
+
+#div_input {
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
 }
 
 input {
@@ -17,6 +24,7 @@ input {
 	padding: 10px;
 	border: 20px;	
 }
+
 
 input[type="submit"] {
 	background: red;
