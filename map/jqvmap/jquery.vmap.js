@@ -446,29 +446,30 @@
         }
       } else {
         map.unhighlight(code, path);
-
+        // TODO .../
         map.label.hide();
         jQuery(params.container).trigger('regionMouseOut.jqvmap', [code, mapData.pathes[code].name]);
       }
     });
 
     jQuery(params.container).delegate(this.canvas.mode == 'svg' ? 'path' : 'shape', 'click', function (e) {
-      if (!params.multiSelectRegion) {
-        for (var key in mapData.pathes) {
-          map.countries[key].currentFillColor = map.countries[key].getOriginalFill();
-          map.countries[key].setFill(map.countries[key].getOriginalFill());
-        }
-      }
-
+      
       var path = e.target;
       var code = e.target.id.split('_').pop();
-
+      
       jQuery(params.container).trigger('regionClick.jqvmap', [code, mapData.pathes[code].name]);
       if (!regionClickEvent.isDefaultPrevented()) {
         if (map.selectedRegions.indexOf(code) !== -1) {
           map.deselect(code, path);
         } else {
           map.select(code, path);
+        }
+      }
+      
+      if (!params.multiSelectRegion) {
+        for (var key in mapData.pathes) {          
+          map.countries[key].currentFillColor = map.countries[key].getOriginalFill();
+          map.countries[key].setFill(map.countries[key].getOriginalFill());
         }
       }
 

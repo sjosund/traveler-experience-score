@@ -1,16 +1,43 @@
-<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>JQVMap - World Map</title>
+    
+    <link href="map/jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheet.css" rel="stylesheet" type="text/css" />
 
-<html>	
-	<head>
-		<link rel="stylesheet" type="text/css" href="stylesheet.css">
-	</head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="map/jqvmap/jquery.vmap.js" type="text/javascript"></script>
+    <script src="map/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
+	<script src="map/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
 
-	<body>
-		<div id="div_input">
-			<form>
-				<input type="text" name="country" placeholder="Where have you been?">
-				<input type="submit">
-			</form>
-		</div>
-	</body>
+	<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery('#vmap').vectorMap({
+		    map: 'world_en',
+		    backgroundColor: '#FFFFFF',
+		    color: '#ffffff',
+		    hoverOpacity: 0.7,
+		    selectedColor: '#FF0000',
+		    enableZoom: false,
+		    showTooltip: true,
+		    values: sample_data,
+		    scaleColors: ['#C8EEFF', '#006491'],
+		    normalizeFunction: 'polynomial',
+		    onRegionClick: function(event, code, region)
+		    {
+		    	var country = {}
+		    	country[code] = "#FF0000"
+		    	jQuery('#vmap').vectorMap('set','colors', country)		    	
+		    }
+		});
+	});
+	</script>
+  </head>
+  <body>
+  	<h1><!--Where have you been?--></h1>
+    <div id="vmap" style="width: 9c00px; height: 600px; margin-left: auto; margin-right: auto; margin-top: 0px"></div>
+    <!--<h1 id="instructions">First, click your home country, then all counties that you've visited.</h1>-->
+  </body>
 </html>
