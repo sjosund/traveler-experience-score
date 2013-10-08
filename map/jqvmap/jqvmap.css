@@ -10,7 +10,7 @@
  */
 .jqvmap-label
 {
-	position: absolute;
+	/*position: absolute;
 	display: none;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -19,7 +19,11 @@
 	color: white;
 	font-family: sans-serif, Verdana;
 	font-size: smaller;
-	padding: 3px;
+	padding: 3px;*/
+	text-align: center;
+	font-family: 'TGE', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	font-size: 30px;
 }
 .jqvmap-zoomin, .jqvmap-zoomout
 {

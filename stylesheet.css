@@ -1,9 +1,10 @@
-h1 {
+.top {
+	font-size: 30px;
 	font-family: Helvetica;
 	text-align: center;
 	margin-top: 50px;
 	margin-bottom: 0px;
-	font-variant: small-caps;
+	text-transform: uppercase;
 }
 
 #instructions {

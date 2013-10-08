@@ -14,6 +14,13 @@
 
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
+		var home = 1
+		var country_list = {};
+		var home_country;
+		var homeCountryColor = '#f0802a';
+		var visitedCountryColor = '#6fb86e';
+		var nonVisitedCountryColor = '#006491';
+
 		jQuery('#vmap').vectorMap({
 		    map: 'world_en',
 		    backgroundColor: '#FFFFFF',
@@ -24,20 +31,53 @@
 		    showTooltip: true,
 		    values: sample_data,
 		    scaleColors: ['#C8EEFF', '#006491'],
-		    normalizeFunction: 'polynomial',
+		    normalizeFunction: 'polynomial',		    
+
 		    onRegionClick: function(event, code, region)
 		    {
-		    	var country = {}
-		    	country[code] = "#FF0000"
-		    	jQuery('#vmap').vectorMap('set','colors', country)		    	
+		    	var country = {};
+
+		    	if (country_list[code] == true && !home) {
+		    		country_list[code] = false;
+		    		country[code] = nonVisitedCountryColor;
+		    	}
+		   		else if (code == home_country) {
+		   			// TODO Fix fulkod
+		   			$('.top').html("Where are you from?");
+		   			home = 1;
+		   			country[code] = nonVisitedCountryColor;
+		   			home_country = "";
+		   		}
+		   		else {
+			    	if (home) {
+			    		country[code] = homeCountryColor;
+			    		home = 0;
+			    		home_country = code;
+			    		country_list[code] = false;			    		
+			    		if (code == 'mx'){
+		    				$('.top').html("You so sleepy. Choose visited place!");
+			    		} else {
+			    			$('.top').html("You're from " + region + ", Choose visited place!");
+			    		}
+			    		
+
+			    	}		    	
+			    	else {
+			    		country[code] = visitedCountryColor;
+			    		country_list[code] = true;
+			    	}
+			    }
+		    	//alert(Object.keys(country_list));
+		    	jQuery('#vmap').vectorMap('set','colors', country);
 		    }
 		});
 	});
 	</script>
   </head>
   <body>
-  	<h1><!--Where have you been?--></h1>
+  	<div class="top">Where are you from?</div>
     <div id="vmap" style="width: 9c00px; height: 600px; margin-left: auto; margin-right: auto; margin-top: 0px"></div>
+    <div class="test"></div>
     <!--<h1 id="instructions">First, click your home country, then all counties that you've visited.</h1>-->
   </body>
 </html>
