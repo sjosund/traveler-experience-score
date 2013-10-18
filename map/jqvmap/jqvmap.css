@@ -10,20 +10,21 @@
  */
 .jqvmap-label
 {
-	/*position: absolute;
+	position: absolute;
 	display: none;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	background: #292929;
-	color: white;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: #FFFFFF;/*#292929;*/
+	color: cornflowerblue;
+        border: 1px solid grey;
 	font-family: sans-serif, Verdana;
 	font-size: smaller;
-	padding: 3px;*/
-	text-align: center;
+	padding: 3px;
+	/*text-align: center;
 	font-family: 'TGE', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	text-transform: uppercase;
-	font-size: 30px;
+	font-size: 30px;*/
 }
 .jqvmap-zoomin, .jqvmap-zoomout
 {
