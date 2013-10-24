@@ -78,6 +78,14 @@
                     $("#blur_box").css("-moz-filter", "blur(0px)");
                     $("#blur_box").css("-webkit-filter", "blur(0px)");
                 });
+
+                 $("#submit").click(function(event){
+			         event.preventDefault();
+			         //calculate destination place
+			         $("#result").show();
+			         var dest=$(window).height();			        
+			         $('html,body').animate({scrollTop:dest}, 1000,'swing');
+			     });
 	});
 	</script>
   </head>
@@ -87,10 +95,11 @@
       </div>
       <div id ="blur_box">
           <div id="vmap" style="width: 900px; height: 600px; margin-left: auto; margin-right: auto; margin-top: 5%"></div>
-
-          
-          <div id="space-invader"></div>
+          <div id="space-invader"></div>      
+          <div id="center"><input type="submit" id="submit" name="Done"></div>
+          <div id="result"></div>
       </div>
+      
   	
     <!--<h1 id="instructions">First, click your home country, then all counties that you've visited.</h1>-->
     

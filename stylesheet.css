@@ -44,6 +44,23 @@
     -webkit-filter:blur(2px);
 }
 
+#result {
+    height: 700px;
+    background-color: black;
+    display: none;
+    margin-top: 10%;
+}
+
+#center {
+    width: 100%;
+    margin: 0, auto;
+}
+
+#submit {
+    width: 100px;    
+    /*margin-left: 50%;*/
+    
+}
 
 #space-invader{
     
