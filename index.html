@@ -22,6 +22,11 @@
 		var visitedCountryColor = '#6fb86e';
 		var nonVisitedCountryColor = '#006491';
 
+		var mockup_results = {
+			"score": 129,
+			"description": "You're a not very awesome traveller."		     		    
+		};
+
 		jQuery('#vmap').vectorMap({
 		    map: 'world_en',
 		    backgroundColor: '#FFFFFF',
@@ -70,6 +75,14 @@
 		    	jQuery('#vmap').vectorMap('set','colors', country);
 		    }
 		});
+				function get_results() {
+					return mockup_results;
+				}
+
+				function display_results(result) {
+					
+				}
+
                 $("#fade_box").click(function() {
                     $("#fade_box").fadeOut(350);
                     $("#blur_box").css("filter", "blur(0px)");
@@ -85,6 +98,9 @@
 			         $("#result").show();
 			         var dest=$(window).height();			        
 			         $('html,body').animate({scrollTop:dest}, 1000,'swing');
+
+			         var result = eval('(' + get_results() + ')');
+			         display_results(result);
 			     });
 	});
 	</script>
@@ -96,8 +112,11 @@
       <div id ="blur_box">
           <div id="vmap" style="width: 900px; height: 600px; margin-left: auto; margin-right: auto; margin-top: 5%"></div>
           <div id="space-invader"></div>      
-          <div id="center"><input type="submit" id="submit" name="Done"></div>
-          <div id="result"></div>
+          <div id="center"><input type="submit" id="submit" value="Done"></div>
+          <div id="result">
+          	<div id="score"></div>
+          	<div id="description"></div>
+          </div>
       </div>
       
   	
