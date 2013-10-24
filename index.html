@@ -80,7 +80,8 @@
 				}
 
 				function display_results(result) {
-					
+					$("#score").text(result.score);
+					$("#description").text(result.description);
 				}
 
                 $("#fade_box").click(function() {
@@ -102,6 +103,7 @@
 			         var result = eval('(' + get_results() + ')');
 			         display_results(result);
 			     });
+
 	});
 	</script>
   </head>
