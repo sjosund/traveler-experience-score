@@ -93,9 +93,9 @@
 
                 $("#submit").click(function(event){                 
                     event.preventDefault();                 
-                    $("#result").toggle();
-                    var dest=$(window).height();
-
+                    $("#result").show();
+                    $("#submit").hide();
+                    var dest=$("#vmap").height();
                     var test = get_results();
                     var result = jQuery.parseJSON(test);
                     display_results(result);
@@ -121,8 +121,6 @@
                 </div>
             </div>
         </div>
-      
-    
     <!--<h1 id="instructions">First, click your home country, then all counties that you've visited.</h1>-->
     
   </body>
