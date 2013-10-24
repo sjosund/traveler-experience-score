@@ -1,4 +1,4 @@
-body {
+body, html {
     text-align: center;
 }
 
@@ -46,8 +46,12 @@ input[type="submit"] {
 }
 #result {
     height: 700px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
     background-color: black;
     display: none;
+    margin-top: 10px;
 }
 #center {
     width: 100%;
@@ -55,8 +59,7 @@ input[type="submit"] {
 }
 #submit {
     width: 100px;    
-    /*margin-left: 50%;*/
-    
+    /*margin-left: 50%;*/    
 }
 
 #space-invader{
@@ -67,9 +70,10 @@ input[type="submit"] {
     -moz-filter:blur(2px);
     -webkit-filter:blur(2px); 
     
-   position: absolute;
-   bottom: 20px;
-   right: 90px;
+   position: relative;
+   margin-top: 50;
+   margin-left: auto;
+   margin-right: auto;
 
   box-shadow:
     0 0 0 1em lightgrey,
