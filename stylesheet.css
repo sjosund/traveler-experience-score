@@ -1,3 +1,15 @@
+body {
+    text-align: center;
+}
+
+input[type="submit"] {
+    background: tomato;
+    color: white;
+    border: 0;
+    padding: 10px;
+    font-size: 18px;
+}
+
 .top {
     font-size: 30px;
     font-family: Helvetica;
