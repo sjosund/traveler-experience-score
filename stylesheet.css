@@ -46,9 +46,15 @@ input[type="submit"] {
 }
 #result {
     height: 700px;
-    background-color: black;
     display: none;
 }
+
+#res_box {
+    background-color: tomato;
+    font-size: 2em;
+    color: white;
+}
+
 #center {
     width: 100%;
     margin: 0, auto;
