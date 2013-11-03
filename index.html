@@ -22,7 +22,7 @@
         var visitedCountryColor = '#6fb86e';
         var nonVisitedCountryColor = '#006491';
 
-        var mockup_results = '{"score": 129, "description": "You are a not very awesome traveller."}';
+        var mockup_results = '{"score": 129, "description": "You are a not very awesome traveller.", "highscores": {"Alexander Hemberg": 14, "Lars Lowe Sjosund": 16}}';        
 
         jQuery('#vmap').vectorMap({
             map: 'world_en',
@@ -73,13 +73,24 @@
             }
         });
                 function get_results() {
-                    return mockup_results;
+                    results = jQuery.parseJSON(mockup_results)
+                    return results;
                 }
 
                 function display_results(result) {
-                    alert(result.score);
                     $("#score").text(result.score);
                     $("#description").text(result.description);
+
+                    var highscores = "<table>";
+                    $.each(result.highscores, function(key, value) {
+                        highscores = highscores.concat("<tr><td>");
+                        highscores = highscores.concat(key);
+                        highscores = highscores.concat("</td><td>");
+                        highscores = highscores.concat(value);
+                        highscores = highscores.concat("</td></tr>");
+                    });
+                    highscores = highscores.concat("</table>")
+                    $("#highscores").text(highscores);
                 }
 
                 $("#fade_box").click(function() {
@@ -91,16 +102,14 @@
                     $("#blur_box").css("-webkit-filter", "blur(0px)");
                 });
 
-                $("#submit").click(function(event){                 
-                    event.preventDefault();                 
+                $("#submit").click(function(event){
+                    event.preventDefault();
                     $("#result").show();
                     $("#submit").hide();
                     var dest=$("#vmap").height();
-                    var test = get_results();
-                    var result = jQuery.parseJSON(test);
-                    display_results(result);
 
-                    $('html,body').animate({scrollTop:dest}, 1000,'swing');                 
+                    display_results(get_results());
+                    $('html,body').animate({scrollTop:dest}, 1000,'swing');
                 });
 
     });
@@ -118,6 +127,7 @@
                 <div id="res_box">
                     <div id="score"></div>
                     <div id="description"></div>
+                    <div id="highscores"></div>
                 </div>
             </div>
         </div>
