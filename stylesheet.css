@@ -2,6 +2,12 @@ body, html {
     text-align: center;
 }
 
+#testblock {
+    width: 5%;
+    height: 10%;
+    background-color: black;
+}
+
 input[type="submit"] {
     background: tomato;
     color: white;

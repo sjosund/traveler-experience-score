@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Big Picture by HTML5 UP</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		
+		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	    <link href="../map/jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css" />
+	    <link href="../stylesheet.css" rel="stylesheet" type="text/css" />
+
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.poptrox.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+
+
+		<!-- For the map -->
+		<script src="../map/jqvmap/jquery.vmap.js" type="text/javascript"></script>
+	    <script src="../map/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
+	    <script src="../map/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
+	    <script type="text/javascript" src="../js/query.js"></script>
+	    
+	    <!-- End of map stuf -->
+
+		<script type="text/javascript">
+		try {
+		    jQuery(document).ready(function() {
+		        var home = 1
+		        var country_list = {};
+		        var home_country;
+		        var homeCountryColor = '#f0802a';
+		        var visitedCountryColor = '#6fb86e';
+		        var nonVisitedCountryColor = '#006491';
+
+		        var mockup_results = '{"score": 129, "description": "You are a not very awesome traveller.", "highscores": {"Alexander Hemberg": 14, "Lars Lowe Sjosund": 16}}';        
+
+		        jQuery('#vmap').vectorMap({
+		            map: 'world_en',
+		            backgroundColor: '#FFFFFF',
+		            color: '#ffffff',
+		            hoverOpacity: 0.7,
+		            selectedColor: '#FF0000',
+		            enableZoom: false,
+		            showTooltip: true,
+		            values: sample_data,
+		            scaleColors: ['#C8EEFF', '#006491'],
+		            normalizeFunction: 'polynomial',            
+
+		            onRegionClick: function(event, code, region)
+		            {
+		                var country = {};
+
+		                if (country_list[code] == true && !home) {
+		                    country_list[code] = false;
+		                    country[code] = nonVisitedCountryColor;
+		                }
+		                else if (code == home_country) {
+		                    // TODO Fix fulkod
+		                    home = 1;
+		                    country[code] = nonVisitedCountryColor;
+		                    home_country = "";
+		                }
+		                else {
+		                    if (home) {
+		                        country[code] = homeCountryColor;
+		                        home = 0;
+		                        home_country = code;
+		                        country_list[code] = false;                     
+		                    }
+		                    else {
+		                        country[code] = visitedCountryColor;
+		                        country_list[code] = true;
+		                    }
+		                }
+		                //alert(Object.keys(country_list));
+		                jQuery('#vmap').vectorMap('set','colors', country);
+		            }
+		        });
+		    });
+		}
+		catch (e){
+			alert("Hej")
+		}
+		</script>
+
+	</head>
+	<body>
+
+			
+		<!-- Intro -->
+			<section id="intro" class="main style1 dark fullscreen">
+				<div class="content container small">
+					<header>
+						<h2>Hey.</h2>
+						<div id="space-invader">
+					</header>
+					
+					<p>Welcome to <strong>Big Picture</strong> a responsive site template designed
+					by <a href="http://html5up.net">HTML5 UP</a>, built on <a href="http://skeljs.org">skelJS</a>,
+					and released for free under the <a href="http://html5up.net/license/">Creative Commons Attribution 3.0 license</a>.</p>
+					<footer>
+						<a href="#one" class="button style2 down">More</a>
+					</footer>
+				</div>
+			</section>
+		
+		<!-- One -->
+			<section id="one" class="main style2 right dark fullscreen">
+				<div id="vmap" style="width: 80%; height: 600px; margin-left: auto; margin-right: auto; margin-top: -300px; margin-bottom: -250px;">Hej</div>
+				<a href="#two" class="button style2 down anchored">Next</a>
+			</section>
+		
+		<!-- Two -->
+			<section id="two" class="main style2 left dark fullscreen">
+				<div class="content box style2">					
+					<header>
+						<h2>Who you are</h2>
+					</header>
+					<p>You suck.</p>
+				</div>
+				<a href="#work" class="button style2 down anchored">Next</a>
+			</section>
+			
+		<!-- Work -->
+			<section id="work" class="main style3 primary">
+
+			</section>
+			
+		<!-- Contact -->
+			<section id="contact" class="main style3 secondary">
+				<div class="content container">
+					<header>
+						<h2>Say Hello.</h2>
+						<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.</p>
+					</header>
+					<div class="box container small">
+					
+						<!--
+							 Contact Form
+							 
+							 To get this working, place a script on your server to receive the form data, then
+							 point the "action" attribute to it (eg. action="http://mydomain.tld/mail.php").
+							 More on how it all works here: http://www.1stwebdesigner.com/tutorials/custom-php-contact-forms/
+						-->
+							<form method="post" action="#">
+								<div class="row half">
+									<div class="6u"><input type="text" name="name" placeholder="Name" /></div>
+									<div class="6u"><input type="text" name="email" placeholder="Email" /></div>
+								</div>
+								<div class="row half">
+									<div class="12u"><textarea name="message" placeholder="Message" rows="6"></textarea></div>
+								</div>
+								<div class="row">
+									<div class="12u">
+										<ul class="actions">
+											<li><input type="submit" class="button" value="Send Message" /></li>
+										</ul>
+									</div>
+								</div>
+							</form>
+
+					</div>
+				</div>
+			</section>
+			
+		<!-- Footer -->
+			<footer id="footer">
+			
+				<!--
+				     Social Icons
+				     
+				     Use anything from here: http://fortawesome.github.io/Font-Awesome/cheatsheet/)
+				-->
+					<ul class="actions">
+						<li><a href="#" class="fa solo fa-twitter"><span>Twitter</span></a></li>
+						<li><a href="#" class="fa solo fa-facebook"><span>Facebook</span></a></li>
+						<li><a href="#" class="fa solo fa-google-plus"><span>Google+</span></a></li>
+						<li><a href="#" class="fa solo fa-dribbble"><span>Dribbble</span></a></li>
+						<li><a href="#" class="fa solo fa-pinterest"><span>Pinterest</span></a></li>
+						<li><a href="#" class="fa solo fa-instagram"><span>Instagram</span></a></li>
+					</ul>
+
+				<!-- Menu -->
+					<ul class="menu">
+						<li>&copy; Untitled</li>
+						<li>Design: <a href="http://html5up.net/">HTML5 UP</a></li>
+					</ul>
+			
+			</footer>
+
+	</body>
+</html>
